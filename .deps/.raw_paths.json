@@ -1,0 +1,4 @@
+{
+  "hardhat@3.4.3/console.sol": ".deps/npm/hardhat@3.4.3/console.sol",
+  "@openzeppelin/contracts@4.9.3/utils/Counters.sol": ".deps/npm/@openzeppelin/contracts@4.9.3/utils/Counters.sol"
+}

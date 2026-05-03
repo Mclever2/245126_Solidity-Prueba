@@ -1,0 +1,72 @@
+{
+	"compiler": {
+		"version": "0.8.34+commit.80d5c536"
+	},
+	"language": "Solidity",
+	"output": {
+		"abi": [
+			{
+				"inputs": [
+					{
+						"internalType": "string",
+						"name": "texto",
+						"type": "string"
+					}
+				],
+				"name": "cambiarSaludo",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "saludar",
+				"outputs": [
+					{
+						"internalType": "string",
+						"name": "",
+						"type": "string"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			}
+		],
+		"devdoc": {
+			"kind": "dev",
+			"methods": {},
+			"version": 1
+		},
+		"userdoc": {
+			"kind": "user",
+			"methods": {},
+			"version": 1
+		}
+	},
+	"settings": {
+		"compilationTarget": {
+			"contracts/11_Complejo1.sol": "Complejo1"
+		},
+		"evmVersion": "osaka",
+		"libraries": {},
+		"metadata": {
+			"bytecodeHash": "ipfs"
+		},
+		"optimizer": {
+			"enabled": false,
+			"runs": 200
+		},
+		"remappings": []
+	},
+	"sources": {
+		"contracts/11_Complejo1.sol": {
+			"keccak256": "0x6863d9b206d2b68abcb1954e144fe49dd208a7f648e26e7d51955d2f1edb4445",
+			"license": "GPL-3.0",
+			"urls": [
+				"bzz-raw://c864d358db6728d3e6874650391401a2611bfdd06af9aa84ce24eea4da8198a0",
+				"dweb:/ipfs/QmTCidVVE9WsjJrakVAuECfK9JCf3F8LwrMKenMRn4d9JV"
+			]
+		}
+	},
+	"version": 1
+}
