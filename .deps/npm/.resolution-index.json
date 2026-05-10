@@ -129,6 +129,14 @@
       }
     }
   },
+  "contracts/11_Comp_String.sol": {
+    "__sources__": {
+      "contracts/11_Comp_String.sol": {
+        "content": "// SPDX-License-Identifier: GPL-3.0\r\npragma solidity >=0.8.2 <0.9.0;\r\n\r\ncontract CompString {\r\n    string private saludo = \"Hola \";\r\n\r\n    function cambiarSaludo(string memory texto) public { \r\n        saludo = texto;\r\n    }\r\n\r\n    function saludar() public view returns(string memory) { \r\n        return saludo;\r\n    }\r\n\r\n    function saludarNombre(string memory texto) public view returns(string memory){\r\n        return string.concat(saludo, texto);\r\n\r\n        //return string(abi.encodePacked(saludo, texto));\r\n    }\r\n\r\n    function saludarTodos(string[] memory nombres) public view returns(string memory){\r\n        string memory resultado = \"\";\r\n\r\n        for (uint i = 0; i < nombres.length; i++) {\r\n            resultado = string.concat(resultado, saludo, nombres[i]);\r\n\r\n            if (i < nombres.length - 1) {\r\n                resultado = string.concat(resultado, \", \");\r\n            }\r\n        }\r\n\r\n        return resultado;\r\n    }\r\n    //tarea cambiar for por while\r\n}",
+        "file": "contracts/11_Comp_String.sol"
+      }
+    }
+  },
   "contracts/13_Comp_Array.sol": {
     "__sources__": {
       "contracts/13_Comp_Array.sol": {
@@ -153,11 +161,11 @@
       }
     }
   },
-  "contracts/11_Comp_String.sol": {
+  "contracts/16_Herencia.sol": {
     "__sources__": {
-      "contracts/11_Comp_String.sol": {
-        "content": "// SPDX-License-Identifier: GPL-3.0\r\npragma solidity >=0.8.2 <0.9.0;\r\n\r\ncontract CompString {\r\n    string private saludo = \"Hola \";\r\n\r\n    function cambiarSaludo(string memory texto) public { \r\n        saludo = texto;\r\n    }\r\n\r\n    function saludar() public view returns(string memory) { \r\n        return saludo;\r\n    }\r\n\r\n    function saludarNombre(string memory texto) public view returns(string memory){\r\n        return string.concat(saludo, texto);\r\n\r\n        //return string(abi.encodePacked(saludo, texto));\r\n    }\r\n\r\n    function saludarTodos(string[] memory nombres) public view returns(string memory){\r\n        string memory resultado = \"\";\r\n\r\n        for (uint i = 0; i < nombres.length; i++) {\r\n            resultado = string.concat(resultado, saludo, nombres[i]);\r\n\r\n            if (i < nombres.length - 1) {\r\n                resultado = string.concat(resultado, \", \");\r\n            }\r\n        }\r\n\r\n        return resultado;\r\n    }\r\n    //tarea cambiar for por while\r\n}",
-        "file": "contracts/11_Comp_String.sol"
+      "contracts/16_Herencia.sol": {
+        "content": "// SPDX-License-Identifier: GPL-3.0\r\npragma solidity >=0.8.2 <0.9.0;\r\n\r\ncontract Animal {\r\n    string public especie;\r\n\r\n    constructor(string memory _especie) { \r\n        especie = _especie;\r\n    }\r\n\r\n    function hacerSonido() public pure virtual returns(string memory) { \r\n        return \"aah\";\r\n    }\r\n\r\n    function obtenerInfo() public view returns(string memory) { \r\n        return string.concat(\"Soy un \", especie);\r\n    }\r\n}\r\n\r\ncontract Perro is Animal {\r\n    constructor() Animal(\"Perro\") { \r\n\r\n    }\r\n\r\n    function hacerSonido() public pure override returns(string memory) { \r\n        return \"guau\";\r\n    }\r\n}\r\n\r\ncontract Gato is Animal {\r\n    constructor() Animal(\"Gato\") { \r\n\r\n    }\r\n\r\n    function hacerSonido() public pure override returns(string memory) { \r\n        return \"miau\";\r\n    }\r\n\r\n    function ronronear() public pure returns (string memory) { \r\n        return \"rrrrr\";\r\n    }\r\n}\r\n\r\ncontract PetStore {\r\n    Animal[] public animales;\r\n\r\n    function agregarPerro(address _direccion) public { \r\n        //Perro p = new Perro();\r\n        animales.push(Perro(_direccion));\r\n    }\r\n\r\n    function agregarGato() public { \r\n        Gato g = new Gato();\r\n        animales.push(g);\r\n    }\r\n\r\n    function getCantidadAnimales() public view returns(uint) { \r\n        return animales.length;\r\n    }\r\n\r\n    function sonidoAnimal(uint indice) public view returns(string memory) { \r\n        return animales[indice].hacerSonido();\r\n    }\r\n\r\n    function infoAnimal(uint indice) public view returns(string memory) { \r\n        return animales[indice].obtenerInfo();\r\n    }\r\n}",
+        "file": "contracts/16_Herencia.sol"
       }
     }
   }
