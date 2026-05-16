@@ -18,11 +18,11 @@
   "contracts/11_Complejo.sol": {
     "__sources__": {}
   },
-  "contracts/10_Primitivos.sol": {
+  "contracts/11_Complejo1.sol": {
     "__sources__": {
-      "contracts/10_Primitivos.sol": {
-        "content": "// SPDX-License-Identifier: GPL-3.0\r\npragma solidity >=0.8.2 <0.9.0;\r\n\r\ncontract Primitivos {\r\n    bool public pausado;\r\n    bytes32 public saludo = hex\"486F6C61\";\r\n    bytes32 public clave;\r\n    function pausar(bool _opcion) public {\r\n        pausado = _opcion;\r\n    }\r\n    function sumar(uint256 primero, uint256 segundo) public view returns(uint256){\r\n        require(pausado == false, \"El contrato estA pausado\");\r\n        return primero + segundo;\r\n    }\r\n    function saludarHex() public view returns(bytes32) {\r\n        return saludo;\r\n    }\r\n    function generarClave(string memory texto) public {\r\n        clave = keccak256(abi.encodePacked(texto));\r\n    }\r\n}",
-        "file": "contracts/10_Primitivos.sol"
+      "contracts/11_Complejo1.sol": {
+        "content": "// SPDX-License-Identifier: GPL-3.0\r\npragma solidity >=0.8.2 <0.9.0;\r\n\r\ncontract Complejo1 {\r\n    string private saludo =\"Hola\";\r\n\r\n    function cambiarSaludo(string memory texto) public {\r\n        saludo = texto;\r\n    }\r\n\r\n    function saludar() public view returns(string memory){\r\n        return saludo;\r\n    }  \r\n}",
+        "file": "contracts/11_Complejo1.sol"
       }
     }
   },
@@ -113,19 +113,11 @@
       }
     }
   },
-  "contracts/11_Complejo1.sol": {
+  "contracts/10_Primitivos.sol": {
     "__sources__": {
-      "contracts/11_Complejo1.sol": {
-        "content": "// SPDX-License-Identifier: GPL-3.0\r\npragma solidity >=0.8.2 <0.9.0;\r\n\r\ncontract Complejo1 {\r\n    string private saludo =\"Hola\";\r\n\r\n    function cambiarSaludo(string memory texto) public {\r\n        saludo = texto;\r\n    }\r\n\r\n    function saludar() public view returns(string memory){\r\n        return saludo;\r\n    }  \r\n}",
-        "file": "contracts/11_Complejo1.sol"
-      }
-    }
-  },
-  "contracts/12_Comp_Bytes.sol": {
-    "__sources__": {
-      "contracts/12_Comp_Bytes.sol": {
-        "content": "// SPDX-License-Identifier: GPL-3.0\r\npragma solidity >=0.8.2 <0.9.0;\r\n\r\ncontract CompBytes {\r\n\r\n    bytes private datos;\r\n\r\n    function guardarDatos(bytes memory _datos) public {\r\n        datos = _datos;\r\n    }\r\n    \r\n    function guardarDatosDesdeTexto(string memory _texto) public {\r\n        datos = bytes(_texto);\r\n    }\r\n\r\n    function agregarDatos(bytes memory _datos) public {\r\n        datos = bytes.concat(datos, _datos);\r\n    }\r\n\r\n    function obtenerDatos() view public returns(bytes memory){\r\n        return datos;\r\n    }\r\n\r\n    function obtenerDatosComoString() public view returns(string memory){\r\n        return string(datos);\r\n    }\r\n\r\n\r\n\r\n\r\n}",
-        "file": "contracts/12_Comp_Bytes.sol"
+      "contracts/10_Primitivos.sol": {
+        "content": "// SPDX-License-Identifier: GPL-3.0\r\npragma solidity >=0.8.2 <0.9.0;\r\n\r\ncontract Primitivos {\r\n    bool public pausado;\r\n    bytes32 public saludo = hex\"486F6C61\";\r\n    bytes32 public clave;\r\n    function pausar(bool _opcion) public {\r\n        pausado = _opcion;\r\n    }\r\n    function sumar(uint256 primero, uint256 segundo) public view returns(uint256){\r\n        require(pausado == false, \"El contrato estA pausado\");\r\n        return primero + segundo;\r\n    }\r\n    function saludarHex() public view returns(bytes32) {\r\n        return saludo;\r\n    }\r\n    function generarClave(string memory texto) public {\r\n        clave = keccak256(abi.encodePacked(texto));\r\n    }\r\n}",
+        "file": "contracts/10_Primitivos.sol"
       }
     }
   },
@@ -134,6 +126,14 @@
       "contracts/11_Comp_String.sol": {
         "content": "// SPDX-License-Identifier: GPL-3.0\r\npragma solidity >=0.8.2 <0.9.0;\r\n\r\ncontract CompString {\r\n    string private saludo = \"Hola \";\r\n\r\n    function cambiarSaludo(string memory texto) public { \r\n        saludo = texto;\r\n    }\r\n\r\n    function saludar() public view returns(string memory) { \r\n        return saludo;\r\n    }\r\n\r\n    function saludarNombre(string memory texto) public view returns(string memory){\r\n        return string.concat(saludo, texto);\r\n\r\n        //return string(abi.encodePacked(saludo, texto));\r\n    }\r\n\r\n    function saludarTodos(string[] memory nombres) public view returns(string memory){\r\n        string memory resultado = \"\";\r\n\r\n        for (uint i = 0; i < nombres.length; i++) {\r\n            resultado = string.concat(resultado, saludo, nombres[i]);\r\n\r\n            if (i < nombres.length - 1) {\r\n                resultado = string.concat(resultado, \", \");\r\n            }\r\n        }\r\n\r\n        return resultado;\r\n    }\r\n    //tarea cambiar for por while\r\n}",
         "file": "contracts/11_Comp_String.sol"
+      }
+    }
+  },
+  "contracts/12_Comp_Bytes.sol": {
+    "__sources__": {
+      "contracts/12_Comp_Bytes.sol": {
+        "content": "// SPDX-License-Identifier: GPL-3.0\r\npragma solidity >=0.8.2 <0.9.0;\r\n\r\ncontract CompBytes {\r\n\r\n    bytes private datos;\r\n\r\n    function guardarDatos(bytes memory _datos) public {\r\n        datos = _datos;\r\n    }\r\n    \r\n    function guardarDatosDesdeTexto(string memory _texto) public {\r\n        datos = bytes(_texto);\r\n    }\r\n\r\n    function agregarDatos(bytes memory _datos) public {\r\n        datos = bytes.concat(datos, _datos);\r\n    }\r\n\r\n    function obtenerDatos() view public returns(bytes memory){\r\n        return datos;\r\n    }\r\n\r\n    function obtenerDatosComoString() public view returns(string memory){\r\n        return string(datos);\r\n    }\r\n\r\n\r\n\r\n\r\n}",
+        "file": "contracts/12_Comp_Bytes.sol"
       }
     }
   },
