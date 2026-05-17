@@ -21,7 +21,7 @@ contract Ferreteria245126 {
         _;
     }
 
-    constructor() registrar {                                                 
+    constructor() registrar {
     }
 
     function agregarElemento(uint _id, string memory _nombre, uint _precio) public registrar {
@@ -34,5 +34,17 @@ contract Ferreteria245126 {
 
     function contarElementos() public view registrar returns(uint) {
         return herramientas.length;
+    }
+
+    function inactivarElemento(uint _posicion) public registrar {
+        herramientas[_posicion].estado = false;
+    }
+
+    function pintarElementosActivos() public view registrar {
+        for (uint i = 0; i < herramientas.length; i++) {
+            if (herramientas[i].estado == true) {
+                console.log("Herramienta activa:", herramientas[i].id, herramientas[i].nombre);
+            }
+        }
     }
 }
