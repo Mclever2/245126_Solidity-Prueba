@@ -12,7 +12,8 @@ contract Ferreteria245126 {
         bool estado;
     }
 
-    Herramienta[] public herramientas;
+    uint256 public cantidad;
+    mapping(uint => Herramienta) public herramientas;
 
     address public dirContrato = 0xd9145CCE52D386f254917e481eB44e9943F39138;
 
@@ -25,26 +26,17 @@ contract Ferreteria245126 {
     }
 
     function agregarElemento(uint _id, string memory _nombre, uint _precio) public registrar {
-        for (uint i = 0; i < herramientas.length; i++) {
-            require(herramientas[i].id != _id, "Herramienta con ese ID ya existe");
-        }
+        require(herramientas[_id].id == 0, "Herramienta con ese ID ya existe");
         require(_precio > 0, "El precio debe ser mayor a cero");
-        herramientas.push(Herramienta(_id, _nombre, _precio, true));
+        herramientas[_id] = Herramienta(_id, _nombre, _precio, true);
+        cantidad = cantidad + 1;
     }
 
     function contarElementos() public view registrar returns(uint) {
-        return herramientas.length;
+        return cantidad;
     }
 
-    function inactivarElemento(uint _posicion) public registrar {
-        herramientas[_posicion].estado = false;
-    }
-
-    function pintarElementosActivos() public view registrar {
-        for (uint i = 0; i < herramientas.length; i++) {
-            if (herramientas[i].estado == true) {
-                console.log("Herramienta activa:", herramientas[i].id, herramientas[i].nombre);
-            }
-        }
+    function inactivarElemento(uint _id) public registrar {
+        herramientas[_id].estado = false;
     }
 }
